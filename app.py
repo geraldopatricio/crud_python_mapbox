@@ -4,10 +4,10 @@ import psycopg2
 app = Flask(__name__)
 
 def connection():
-    s = 'localhost' 
-    d = 'amazonlabs' 
-    u = 'postgres'
-    p = 'odlareg' 
+    s = 'SEU_HOST' 
+    d = 'NOME_BANCO' 
+    u = 'USERNAME'
+    p = 'SUA_SENHA' 
     conn = psycopg2.connect(host=s, user=u, password=p, database=d)
     return conn
 
