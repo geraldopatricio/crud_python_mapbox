@@ -61,6 +61,18 @@ CREATE TABLE public.atendimento (
     alterado_em timestamp without time zone,
     etag integer DEFAULT 1 NOT NULL
 );
+
+CREATE TABLE public.usuario (
+    id bigint NOT NULL,
+    nome character varying(100) NOT NULL,
+    dh_ultimo_acesso timestamp without time zone NOT NULL,
+    criado_por bigint,
+    criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    alterado_por bigint,
+    alterado_em timestamp without time zone,
+    etag integer DEFAULT 1 NOT NULL
+);
+
 ```
 
 ## Criando o projeto env
