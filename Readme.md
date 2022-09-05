@@ -4,10 +4,10 @@
 
 ## Telas do sistema:
 <p align="center">
-  <img src="./assets/images/crud.png" width="700" alt="Tela CRUD Cidades" /></a>
+  <img src="./assets/images/crud.png" width="800" alt="Tela CRUD Cidades" /></a>
 </p>
 <p align="center">
-  <img src="./assets/images/mapa.png" width="700" alt="Modelo Mapa" /></a>
+  <img src="./assets/images/mapa.png" width="800" alt="Modelo Mapa" /></a>
 </p>
 
 ## criando o banco
