@@ -103,7 +103,7 @@ flask run
 ## OBS, Considerações funcionais do back e front:
 ```bash
 O Backend funcionará na porta 5000
-O FrontEnd está configurado para rodar nna porta default do apache em: http://localhost/GPSoft/
+O FrontEnd está configurado para rodar na porta default do apache em: http://localhost/GPSoft/
 Caso for mudar para Nginx, ou suar Windows atentar para essas mudanças ok.
 
 TESTANDO:
