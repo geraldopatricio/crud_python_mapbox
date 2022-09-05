@@ -19,9 +19,13 @@ def main():
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM cidade_brasil")
     for row in cursor.fetchall():
-        cids.append({"id": row[0], "cidade": row[2], "estado": row[1], "regiao": row[4], "populacao": row[3], "coordenada": row[5]})
+        cids.append({"id": row[0], "cidade": row[3], "estado": row[1], "regiao": row[7], "populacao": row[6], "coordenada": row[8]})
     conn.close()
     return render_template("cidades.html", cids = cids)
+
+@app.route('/mapa')
+def mapalist():
+    return render_template("mapa.html", map = map)
 
 if(__name__ == "__main__"):
     app.run()
