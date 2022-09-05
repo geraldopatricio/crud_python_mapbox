@@ -72,5 +72,11 @@ pip install flask
 
 ## rodar o projeto
 ```bash
-falsk run
+flask run
+```
+
+## suporte
+```bash
+Zap: 85 9 97635122
+Mail: geraldo@gpsoft.com.br
 ```
