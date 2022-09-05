@@ -103,7 +103,7 @@ pip install flask
 flask run
 ```
 
-## OBS, Considerações funcionais do back e front:
+## OBS: Considerações funcionais do back e front:
 ```bash
 O Backend funcionará na porta 5000
 O FrontEnd está configurado para rodar na porta default do apache em: http://localhost/GPSoft/
