@@ -109,12 +109,16 @@ flask run
 ## OBS: Considerações funcionais do back e front:
 ```bash
 1 - O Backend funcionará na porta 5000
-2 - O FrontEnd está configurado para rodar na porta default do apache em: http://localhost/GPSoft/
-    Caso for mudar para Nginx, ou usar Windows com Xampp, etc... atentar para essas mudanças dos 
-    caminhos da pasta assets ok.
+2 - O FrontEnd está configurado para rodar na porta default do apache em: 
+    http://localhost/GPSoft/
+    Caso for mudar para Nginx, ou usar Windows com Xampp, etc... 
+    atentar para essas mudanças dos caminhos da pasta assets ok.
 
 TESTANDO:
-Para visualizar a aplicação no browser use a rota: http://localhost:5000/cidades
+Para visualizar a aplicação no browser utilize aa rotas: 
+http://localhost:5000/login
+http://localhost:5000/cidades
+http://localhost:5000/mapa
 
 ```
 
