@@ -9,7 +9,7 @@
 
 ## criando o banco
 ```bash
-docker run --name postgres-db -e POSTGRES_PASSWORD=odlareg -p 5432:5432 -d postgres
+docker run --name postgres-db -e POSTGRES_PASSWORD=SUA_SENHA_AQUI -p 5432:5432 -d postgres
 ```
 
 ## Criando o projeto env
