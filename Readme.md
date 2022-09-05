@@ -120,6 +120,11 @@ http://localhost:5000/login
 http://localhost:5000/cidades
 http://localhost:5000/mapa
 
+INFO Importante:
+Com a implemtentação de API's de terceiros, como Google Maps, MapBox, 
+dentre outros, não se faz necessário usar uma base de cadastro de 
+cidades, UF, etc... pois já temos isso na API que será consumida.
+
 ```
 
 ## suporte
