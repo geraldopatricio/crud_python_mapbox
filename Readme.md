@@ -106,9 +106,12 @@ http://localhost:5000/consulta
 http://localhost:5000/rota
 
 INFO Importante:
-Com a implementação de API's de terceiros, como Google Maps, MapBox, 
+Com a implementação de API´s de terceiros, como Google Maps, MapBox, 
 dentre outros, não se faz necessário usar uma base de cadastro de 
 cidades, UF, etc... pois já temos isso na API que será consumida.
+
+Referências:
+https://github.com/googlemaps/google-maps-services-python/blob/master/googlemaps/distance_matrix.py
 
 ```
 
