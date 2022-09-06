@@ -153,8 +153,8 @@ flask run
 TESTANDO:
 Para visualizar a aplicação no browser utilize aa rotas: 
 http://localhost:5000/login
-http://localhost:5000/usuario
-http://localhost:5000/tecnico
+http://localhost:5000/usuarios
+http://localhost:5000/tecnicos
 http://localhost:5000/atendimento
 http://localhost:5000/consulta
 http://localhost:5000/rota
