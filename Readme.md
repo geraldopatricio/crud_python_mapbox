@@ -23,6 +23,17 @@ docker run --name postgres-db -e POSTGRES_PASSWORD=SUA_SENHA_AQUI -p 5432:5432 -
 ## Gerando as tabelas
 ```bash
 
+CREATE TABLE public.usuario (
+	id bigint NOT NULL,
+	nome character varying(100) NOT NULL,
+	dh_ultimo_acesso timestamp without time zone NOT NULL,
+	criado_por bigint,
+	criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	alterado_por bigint,
+	alterado_em timestamp without time zone,
+	etag integer DEFAULT 1 NOT NULL
+);
+
 CREATE TABLE public.tecnico (
 	id serial4 NOT NULL,
 	nome varchar(30) NOT NULL,
@@ -38,28 +49,17 @@ CREATE TABLE public.tecnico (
 );
 
 CREATE TABLE public.atendimento (
-    id bigint NOT NULL,
-    id_tecnico bigint NOT NULL,
-    dh_inicio timestamp without time zone,
-    dh_termino timestamp without time zone,
-    nota numeric(10,2),
-    coordenada point NOT NULL,
-    criado_por bigint NOT NULL,
-    criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    alterado_por bigint,
-    alterado_em timestamp without time zone,
-    etag integer DEFAULT 1 NOT NULL
-);
-
-CREATE TABLE public.usuario (
-    id bigint NOT NULL,
-    nome character varying(100) NOT NULL,
-    dh_ultimo_acesso timestamp without time zone NOT NULL,
-    criado_por bigint,
-    criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    alterado_por bigint,
-    alterado_em timestamp without time zone,
-    etag integer DEFAULT 1 NOT NULL
+	id bigint NOT NULL,
+	id_tecnico bigint NOT NULL,
+	dh_inicio timestamp without time zone,
+	dh_termino timestamp without time zone,
+	nota numeric(10,2),
+	coordenada point NOT NULL,
+	criado_por bigint NOT NULL,
+	criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	alterado_por bigint,
+	alterado_em timestamp without time zone,
+	etag integer DEFAULT 1 NOT NULL
 );
 
 ```
@@ -100,6 +100,7 @@ flask run
 TESTANDO:
 Para visualizar a aplicação no browser utilize aa rotas: 
 http://localhost:5000/login
+http://localhost:5000/usuario
 http://localhost:5000/tecnico
 http://localhost:5000/atendimento
 http://localhost:5000/consulta
