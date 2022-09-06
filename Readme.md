@@ -62,6 +62,17 @@ CREATE TABLE public.atendimento (
 	etag integer DEFAULT 1 NOT NULL
 );
 
+create view v_consulta as (select 
+       cid.cidade
+	 , cid.estado 
+	 , count(ate.id) atendimentos
+	 , count(tec.id) acessos
+	 , ate.nota 
+from atendimento ate, tecnico tec, cidade_brasil cid
+where cid.id = tec.id_cidade
+  and tec.id = ate.id_tecnico  
+  group by cid.cidade, cid.estado, ate.nota)
+  
 ```
 
 ## Criando o projeto env
