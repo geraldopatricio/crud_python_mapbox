@@ -112,6 +112,13 @@ dentre outros, não se faz necessário usar uma base de cadastro de
 cidades, UF, etc... pois já temos isso na API que será consumida.
 
 Referências:
+MapBox:
+https://docs.mapbox.com/api/navigation/matrix/
+https://docs.mapbox.com/help/glossary/matrix-api/
+https://blog.mapbox.com/distance-api-launches-e8f2c3a6fb61
+
+Google Maps:
+https://developers.google.com/maps/documentation/distance-matrix/overview?hl=pt-br
 https://github.com/googlemaps/google-maps-services-python/blob/master/googlemaps/distance_matrix.py
 
 ```
