@@ -22,24 +22,6 @@ docker run --name postgres-db -e POSTGRES_PASSWORD=SUA_SENHA_AQUI -p 5432:5432 -
 ```
 ## Gerando as tabelas
 ```bash
-CREATE TABLE public.cidade_brasil (
-	id serial4 NOT NULL,
-	estado varchar(255) NULL,
-	nome_estado varchar(255) NULL,
-	cidade varchar(255) NULL,
-	codigo_cidade varchar(255) NULL,
-	codigo_estado varchar(255) NULL,
-	população varchar(255) NULL,
-	regiao varchar(255) NULL,
-	coordenada varchar(255) NULL,
-	parceiros varchar(255) NULL,
-	criado_por varchar(255) NULL,
-	criado_em varchar(255) NULL,
-	alterado_por varchar(255) NULL,
-	alterado_em varchar(255) NULL,
-	etag varchar(255) NULL,
-	CONSTRAINT cidade_brasil_pkey PRIMARY KEY (id)
-);
 
 CREATE TABLE public.tecnico (
 	id serial4 NOT NULL,
@@ -61,6 +43,7 @@ CREATE TABLE public.atendimento (
     dh_inicio timestamp without time zone,
     dh_termino timestamp without time zone,
     nota numeric(10,2),
+	coordenada varchar(255) NULL,
     criado_por bigint NOT NULL,
     criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     alterado_por bigint,
@@ -117,8 +100,10 @@ flask run
 TESTANDO:
 Para visualizar a aplicação no browser utilize aa rotas: 
 http://localhost:5000/login
-http://localhost:5000/cidades
-http://localhost:5000/mapa
+http://localhost:5000/tecnico
+http://localhost:5000/atendimento
+http://localhost:5000/consulta
+http://localhost:5000/rota
 
 INFO Importante:
 Com a implementação de API's de terceiros, como Google Maps, MapBox, 
