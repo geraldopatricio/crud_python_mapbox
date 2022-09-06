@@ -34,6 +34,25 @@ CREATE TABLE public.usuario (
 	etag integer DEFAULT 1 NOT NULL
 );
 
+CREATE TABLE public.cidade_brasil (
+	id serial4 NOT NULL,
+	estado varchar(255) NULL,
+	nome_estado varchar(255) NULL,
+	cidade varchar(255) NULL,
+	codigo_cidade varchar(255) NULL,
+	codigo_estado varchar(255) NULL,
+	população varchar(255) NULL,
+	regiao varchar(255) NULL,
+	coordenada varchar(255) NULL,
+	parceiros varchar(255) NULL,
+	criado_por varchar(255) NULL,
+	criado_em varchar(255) NULL,
+	alterado_por varchar(255) NULL,
+	alterado_em varchar(255) NULL,
+	etag varchar(255) NULL,
+	CONSTRAINT cidade_brasil_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE public.tecnico (
 	id serial4 NOT NULL,
 	nome varchar(30) NOT NULL,
