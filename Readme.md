@@ -22,17 +22,24 @@ docker run --name postgres-db -e POSTGRES_PASSWORD=SUA_SENHA_AQUI -p 5432:5432 -
 ```
 ## Gerando as tabelas
 ```bash
-
-CREATE TABLE public.usuario (
-	id bigint NOT NULL,
-	nome character varying(100) NOT NULL,
-	dh_ultimo_acesso timestamp without time zone NOT NULL,
-	criado_por bigint,
-	criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	alterado_por bigint,
-	alterado_em timestamp without time zone,
-	etag integer DEFAULT 1 NOT NULL
+CREATE TABLE public.atendimento (
+	id int8 NOT NULL,
+	id_cliente int8 NOT NULL,
+	id_tecnico int8 NOT NULL,
+	dt_cad timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	dt_close timestamp NULL,
+	descricao varchar(255) NOT NULL,
+	nota varchar(4) NULL,
+	status varchar(30) NULL,
+	CONSTRAINT atendimento_pkey PRIMARY KEY (id)
 );
+
+CREATE TABLE public.atendimento_status (
+	id int8 NOT NULL,
+	descricao varchar(30) NOT NULL,
+	CONSTRAINT atendimento_status_pkey PRIMARY KEY (id)
+);
+
 
 CREATE TABLE public.cidade_brasil (
 	id serial4 NOT NULL,
@@ -51,47 +58,63 @@ CREATE TABLE public.cidade_brasil (
 	alterado_em varchar(255) NULL,
 	etag varchar(255) NULL,
 	CONSTRAINT cidade_brasil_pkey PRIMARY KEY (id)
+	
+	
+CREATE TABLE public.cliente (
+	id serial4 NOT NULL,
+	id_cidade_brasil int8 NOT NULL,
+	nome varchar(50) NULL,
+	CONSTRAINT cliente_pkey PRIMARY KEY (id)
 );
+
 
 CREATE TABLE public.tecnico (
 	id serial4 NOT NULL,
-	nome varchar(30) NOT NULL,
 	id_cidade int8 NOT NULL,
-	criado_por int8 NULL,
-	criado_em timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	nome varchar(30) NOT NULL,
 	nota_media varchar(30) NULL,
-	coordenada point NOT NULL,
-	alterado_por int8 NULL,
-	alterado_em timestamp NULL,
-	etag int4 NOT NULL DEFAULT 1,
 	CONSTRAINT tecnico_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE public.atendimento (
-	id bigint NOT NULL,
-	id_tecnico bigint NOT NULL,
-	dh_inicio timestamp without time zone,
-	dh_termino timestamp without time zone,
-	nota numeric(10,2),
-	coordenada point NOT NULL,
-	criado_por bigint NOT NULL,
-	criado_em timestamp without time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	alterado_por bigint,
-	alterado_em timestamp without time zone,
-	etag integer DEFAULT 1 NOT NULL
+CREATE TABLE public.usuario (
+	id int8 NOT NULL,
+	nome varchar(100) NOT NULL,
+	criado_em timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	alterado_em timestamp NOT NULL,
+	CONSTRAINT user_pkey PRIMARY KEY (id)
 );
 
-create view v_consulta as (select 
-       cid.cidade
-	 , cid.estado 
-	 , count(ate.id) atendimentos
-	 , count(tec.id) acessos
-	 , ate.nota 
-from atendimento ate, tecnico tec, cidade_brasil cid
-where cid.id = tec.id_cidade
-  and tec.id = ate.id_tecnico  
-  group by cid.cidade, cid.estado, ate.nota)
+ 
+CREATE OR REPLACE VIEW public.v_consulta
+AS SELECT cid.cidade,
+    cid.estado,
+    count(ate.id) AS atendimentos,
+    count(tec.id) AS acessos,
+    ate.nota
+   FROM atendimento ate,
+    tecnico tec,
+    cidade_brasil cid
+  WHERE cid.id = tec.id_cidade AND tec.id = ate.id_tecnico
+  GROUP BY cid.cidade, cid.estado, ate.nota;
   
+
+CREATE OR REPLACE VIEW public.v_atendimento_cidade_cliente
+AS select ate.id as cod_atendimento
+        , cli.nome as cliente 
+        , cb.cidade as cidade
+        , cb.nome_estado as estado
+        , cb.coordenada
+   FROM atendimento ate, cliente cli, cidade_brasil cb
+  WHERE ate.id_cliente = cli.id  
+    and cli.id_cidade_brasil = cb.id 
+    
+
+CREATE OR REPLACE VIEW public.v_tecnico_disponivel
+AS select tec.nome as tecnico_disponivel
+FROM tecnico tec,
+    atendimento ate
+  WHERE tec.id = ate.id_tecnico AND ate.status::text <> 'Aberto'
+    
 ```
 
 ## Criando o projeto env
