@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="http://localhost/GPSoft/assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="http://localhost/GPSoft/assets/images/favicon.png" type="image/x-icon">
-    <title>Cidades</title>
+    <title>Atendimentos</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
@@ -105,12 +105,12 @@
                   </li>
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="server"></i><span>Navegar</span></a>
                     <ul class="nav-submenu menu-content">
-                      <li><a href="cidades">Cidades</a></li>
-                      <li><a href="usuarios">Usuários</a></li>
-                      <li><a href="tecnicos">Técnicos</a></li>
-                      <li><a href="atendimentos">Atendimento</a></li>
-                      <li><a href="consulta">Consulta</a></li>
-                      <li><a href="rota">Rotas</a></li>
+                        <li><a href="cidades">Cidades</a></li>
+                        <li><a href="usuarios">Usuários</a></li>
+                        <li><a href="tecnicos">Técnicos</a></li>
+                        <li><a href="atendimentos">Atendimento</a></li>
+                        <li><a href="consulta">Consulta</a></li>
+                        <li><a href="rota">Rotas</a></li>
                     </ul>
                   </li>
                   <li><a class="nav-link menu-title link-nav" href="#"><i data-feather="headphones"></i><span>Ajuda</span></a></li>
@@ -132,7 +132,7 @@
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item">Navegação</li>
                     <li class="breadcrumb-item">Listar</li>
-                    <li class="breadcrumb-item active">Cidades</li>
+                    <li class="breadcrumb-item active">Atendimentos</li>
                   </ol>
                 </div>
                 <div class="col-sm-6">
@@ -169,8 +169,8 @@
                         <tr>
                           <td>
                             <div class="card-header">
-                              <h5>TABELA DE CIDADES DO BRASIL</h5>
-                              <span>Aqui você irá encontra a lista completa de todas as cidades do Brasil</span>
+                              <h5>TABELA DE ATENDIMENTOS</h5>
+                              <span>Aqui você irá encontra a lista de Atendimentos</span>
                             </div>
                           </td>
                           <td align="right">
@@ -187,24 +187,28 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>CIDADE</th>
-                            <th>UF</th>
-                            <th>REGIAO</th>
-                            <th>POPULAÇÃO</th>
-                            <th>COORDENADAS</th>
+                            <th>ID CLIENTE</th>
+                            <th>ID TÉCNICO</th>
+                            <th>DATA CADASTRO</th>
+                            <th>DATA FECHAMENTO</th>
+                            <th>DESCRIÇÃO DO ATENDIMENTO</th>
+                            <th>NOTA</th>
+                            <th>STATUS</th>
                             <th></th>
                             <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                          {% for cid in cids %}
+                          {% for atend in atends %}
                               <tr>
-                                  <td>{{ cid.id }}</th>
-                                  <td>{{ cid.cidade }}</td>
-                                  <td>{{ cid.estado }}</td>
-                                  <td>{{ cid.regiao }}</td>
-                                  <td>{{ cid.populacao }}</td>
-                                  <td>{{ cid.coordenada }}</td>
+                                <td>{{ atend.id }}</th>
+                                <td>{{ atend.id_cliente }}</td>
+                                <td>{{ atend.id_tecnico }}</td>
+                                <td>{{ atend.dt_cad }}</td>
+                                <td>{{ atend.dt_close }}</th>
+                                <td>{{ atend.descricao }}</td>
+                                <td>{{ atend.nota }}</td>
+                                <td>{{ atend.status }}</td>
                                   <td><a href='#'><button class="btn btn-outline-primary-2x" type="button" title="EDITAR"><i data-feather="edit"></i></button></a></td>
                                   <td><a href='#'><button class="btn btn-outline-danger-2x" type="button" title="EXCLUIR"><i data-feather="trash-2"></i></button></a></td>
                               </tr>

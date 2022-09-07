@@ -9,7 +9,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="http://localhost/GPSoft/assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="http://localhost/GPSoft/assets/images/favicon.png" type="image/x-icon">
-    <title>Cidades</title>
+    <title>Consular Técnicos Disponíveis</title>
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
@@ -36,6 +36,40 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="http://localhost/GPSoft/assets/css/responsive.css">
 
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
+<link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet" />
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    }
+    #map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    }
+    .marker {
+    background-image: url('http://localhost/GPSoft/assets/images/ico.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    }
+    .mapboxgl-popup {
+    max-width: 200px;
+    }
+    .mapboxgl-popup-content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    }
+</style>
+
+
   </head>
   <body>
     <!-- Loader starts-->
@@ -51,7 +85,7 @@
       <div class="page-main-header">
         <div class="main-header-right row m-0">
           <div class="main-header-left">
-            <div class="logo-wrapper"><a href="login"><span>GPSoft</span></a></div>
+            <div class="logo-wrapper"><a href="#"><span>GPSoft</span></a></div>
             <div class="dark-logo-wrapper"><a href="#">GPSoft</a></div>
             <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
           </div>
@@ -105,12 +139,12 @@
                   </li>
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="server"></i><span>Navegar</span></a>
                     <ul class="nav-submenu menu-content">
-                      <li><a href="cidades">Cidades</a></li>
-                      <li><a href="usuarios">Usuários</a></li>
-                      <li><a href="tecnicos">Técnicos</a></li>
-                      <li><a href="atendimentos">Atendimento</a></li>
-                      <li><a href="consulta">Consulta</a></li>
-                      <li><a href="rota">Rotas</a></li>
+                        <li><a href="cidades">Cidades</a></li>
+                        <li><a href="usuarios">Usuários</a></li>
+                        <li><a href="tecnicos">Técnicos</a></li>
+                        <li><a href="atendimentos">Atendimento</a></li>
+                        <li><a href="consulta">Consulta</a></li>
+                        <li><a href="rota">Rotas</a></li>
                     </ul>
                   </li>
                   <li><a class="nav-link menu-title link-nav" href="#"><i data-feather="headphones"></i><span>Ajuda</span></a></li>
@@ -131,8 +165,8 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item">Navegação</li>
-                    <li class="breadcrumb-item">Listar</li>
-                    <li class="breadcrumb-item active">Cidades</li>
+                    <li class="breadcrumb-item">Consultar</li>
+                    <li class="breadcrumb-item active">Técnicos Disponíveis</li>
                   </ol>
                 </div>
                 <div class="col-sm-6">
@@ -160,57 +194,92 @@
           <!-- Container-fluid starts-->
           <div class="container-fluid">
             <div class="row">
-              <!-- Zero Configuration  Starts-->
+                <form class="form theme-form">
+                    <div class="card-body">                    
+                        <div class="row">
+                            <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleFormControlSelect9">Técnicos Disponíveis</label>
+                                <select class="form-select digits" id="exampleFormControlSelect9">
+                                <option disabled>Escolha</option>
+                                <option disabled>----------</option>
+                                <option selected>Todos</option>
+                                <option disabled>----------</option>
+                                <option>Fulano</option>
+                                <option>Beltrano</option>
+                                <option>Ciclano</option>
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
               <div class="col-sm-12">
                 <div class="card">
-                  <div class="card-body">
-                    <div>
-                      <table width="100%">
-                        <tr>
-                          <td>
-                            <div class="card-header">
-                              <h5>TABELA DE CIDADES DO BRASIL</h5>
-                              <span>Aqui você irá encontra a lista completa de todas as cidades do Brasil</span>
-                            </div>
-                          </td>
-                          <td align="right">
-                            <a href="add"><button class="btn btn-pill btn-outline-primary-2x" type="button">Adicionar</button></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <br>
-                          </td>
-                        </tr>
-                      </table>
-                      <table class="display" id="basic-1">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>CIDADE</th>
-                            <th>UF</th>
-                            <th>REGIAO</th>
-                            <th>POPULAÇÃO</th>
-                            <th>COORDENADAS</th>
-                            <th></th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for cid in cids %}
-                              <tr>
-                                  <td>{{ cid.id }}</th>
-                                  <td>{{ cid.cidade }}</td>
-                                  <td>{{ cid.estado }}</td>
-                                  <td>{{ cid.regiao }}</td>
-                                  <td>{{ cid.populacao }}</td>
-                                  <td>{{ cid.coordenada }}</td>
-                                  <td><a href='#'><button class="btn btn-outline-primary-2x" type="button" title="EDITAR"><i data-feather="edit"></i></button></a></td>
-                                  <td><a href='#'><button class="btn btn-outline-danger-2x" type="button" title="EXCLUIR"><i data-feather="trash-2"></i></button></a></td>
-                              </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
+                  <div style="height: 700px;">
+                    
+                    <div>                      
+                          
+
+                        <div id="map"></div>
+                            
+                            <script>
+                            mapboxgl.accessToken = 'pk.eyJ1IjoicGF0cmljaW9tZWxvIiwiYSI6ImNqMzZocXN5bTAwMHcycW4xbDFldTRwZmgifQ.1FE9u3161-wNaMGRMv5OWA';
+                            
+                            const geojson = {
+                            'type': 'FeatureCollection',
+                            'features': [
+                            {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-43.218, -22.624]
+                            },
+                            'properties': {
+                            'title': 'Técnico: Ciclano',
+                            'description': 'Cidade: Rio de Janeiro <br>Estado: RJ <br>Distância: 10 Km <br>Últimos Atendimentos: 99 <br>Últimos Acessos: 1 dia <br>Nota média: 10'
+                            }
+                            },
+                            {
+                            'type': 'Feature',
+                            'geometry': {
+                            'type': 'Point',
+                            'coordinates': [-38.524, -3.725]
+                            },
+                            'properties': {
+                            'title': 'Técnico: Fulano',
+                            'description': 'Cidade: Fortaleza <br>Estado: CE <br>Distância: 20 Km <br>Últimos Atendimentos: 99 <br>Últimos Acessos: 2 dias <br>Nota média: 10'
+                            }
+                            }
+                            ]
+                            };
+                            
+                            const map = new mapboxgl.Map({
+                            container: 'map',
+                            style: 'mapbox://styles/mapbox/light-v10',
+                            center: [-47.8, -14.8],
+                            zoom: 3
+                            });
+                            
+                            // add markers to map
+                            for (const feature of geojson.features) {
+                            // create a HTML element for each feature
+                            const el = document.createElement('div');
+                            el.className = 'marker';
+                            
+                            // make a marker for each feature and add it to the map
+                            new mapboxgl.Marker(el)
+                            .setLngLat(feature.geometry.coordinates)
+                            .setPopup(
+                            new mapboxgl.Popup({ offset: 25 }) // add popups
+                            .setHTML(
+                            `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+                            )
+                            )
+                            .addTo(map);
+                            }
+                            </script>
+
                     </div>
                   </div>
                 </div>

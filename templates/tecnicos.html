@@ -106,11 +106,10 @@
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="server"></i><span>Navegar</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="cidades">Cidades</a></li>
-                      <li><a href="usuarios">Usuários</a></li>
                       <li><a href="tecnicos">Técnicos</a></li>
                       <li><a href="atendimentos">Atendimento</a></li>
                       <li><a href="consulta">Consulta</a></li>
-                      <li><a href="rota">Rotas</a></li>
+                      <li><a href="rota">Rotas de Atendimento</a></li>
                     </ul>
                   </li>
                   <li><a class="nav-link menu-title link-nav" href="#"><i data-feather="headphones"></i><span>Ajuda</span></a></li>
@@ -131,7 +130,7 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item">Navegação</li>
-                    <li class="breadcrumb-item">Listar</li>
+                    <li class="breadcrumb-item">Lista</li>
                     <li class="breadcrumb-item active">Cidades</li>
                   </ol>
                 </div>
@@ -169,8 +168,8 @@
                         <tr>
                           <td>
                             <div class="card-header">
-                              <h5>TABELA DE CIDADES DO BRASIL</h5>
-                              <span>Aqui você irá encontra a lista completa de todas as cidades do Brasil</span>
+                              <h5>TABELA DE TÉCNICOS</h5>
+                              <span>Aqui você irá encontra a lista de nossos técnicos</span>
                             </div>
                           </td>
                           <td align="right">
@@ -187,24 +186,20 @@
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>CIDADE</th>
-                            <th>UF</th>
-                            <th>REGIAO</th>
-                            <th>POPULAÇÃO</th>
-                            <th>COORDENADAS</th>
+                            <th>NOME</th>
+                            <th>NOTA</th>
+                            <th>COORDENADA</th>
                             <th></th>
                             <th></th>
                           </tr>
                         </thead>
                         <tbody>
-                          {% for cid in cids %}
+                          {% for tec in tecs %}
                               <tr>
-                                  <td>{{ cid.id }}</th>
-                                  <td>{{ cid.cidade }}</td>
-                                  <td>{{ cid.estado }}</td>
-                                  <td>{{ cid.regiao }}</td>
-                                  <td>{{ cid.populacao }}</td>
-                                  <td>{{ cid.coordenada }}</td>
+                                  <td>{{ tec.id }}</th>
+                                  <td>{{ tec.nome }}</td>
+                                  <td>{{ tec.nota_media }}</td>
+                                  <td>{{ tec.coordenada }}</td>
                                   <td><a href='#'><button class="btn btn-outline-primary-2x" type="button" title="EDITAR"><i data-feather="edit"></i></button></a></td>
                                   <td><a href='#'><button class="btn btn-outline-danger-2x" type="button" title="EXCLUIR"><i data-feather="trash-2"></i></button></a></td>
                               </tr>
