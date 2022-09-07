@@ -165,50 +165,48 @@
                 <div class="card">
                   <div class="card-body">
                     <div>
-                      <table width="100%">
-                        <tr>
-                          <td>
-                            <div class="card-header">
-                              <h5>TABELA DE USUÁRIOS</h5>
-                              <span>Aqui você irá encontra a lista de nossos usuários</span>
+                      
+                        <form class="needs-validation" novalidate="" method="POST" action="">
+                            <div class="row g-3">
+                              <div class="col-md-1">
+                                <label class="form-label" for="id">ID</label>
+                                <input class="form-control" id="id" name="id" type="text" value="{{user.id}}" required="">
+                                <div class="invalid-feedback">Insira o ID sequencial.</div>
+                              </div>
+                              <div class="col-md-2">
+                                <label class="form-label" for="usuario">USUÁRIO</label>
+                                <input class="form-control" id="usuario" name="usuario" type="text" value="{{user.usuario}}" required="">
+                                <div class="invalid-feedback">Insira o nome de usuario.</div>
+                              </div>
+                              <div class="col-md-2">
+                                <label class="form-label" for="password">SENHA</label>
+                                <input class="form-control" id="senha" name="senha" type="password" value="{{user.senha}}" required="">
+                                <div class="invalid-feedback">Insira a senha.</div>
+                              </div>
+                              <div class="col-md-2">
+                                <label class="form-label" for="criado_em">CRIADO EM</label>
+                                <div class="input-group">
+                                    <input class="form-control digits" id="criado_em" name="criado_em" type="datetime-local" value="{{user.criado_em}}">
+                                  <div class="invalid-feedback">Insira a data.</div>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <label class="form-label" for="alterado_em">ALTERADO EM</label>
+                                <div class="input-group">
+                                    <input class="form-control digits" id="alterado_em" name="alterado_em" type="datetime-local" value="{{user.alterado_em}}">
+                                  <div class="invalid-feedback">Insira a data.</div>
+                                </div>
+                              </div>
                             </div>
-                          </td>
-                          <td align="right">
-                            <a href="usuario_add"><button class="btn btn-pill btn-outline-primary-2x" type="button">Adicionar</button></a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <br>
-                          </td>
-                        </tr>
-                      </table>
-                      <table class="display" id="basic-1">
-                        <thead>
-                          <tr>
-                            <th>ID</th>
-                            <th>USUÁRIO</th>
-                            <th>SENHA</th>
-                            <th>CRIADO EM</th>
-                            <th>ALTERADO EM</th>
-                            <th></th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for user in users %}
-                              <tr>
-                                  <td>{{ user.id }}</th>
-                                  <td>{{ user.usuario }}</td>
-                                  <td>**********</td>
-                                  <td>{{ user.criado_em }}</td>
-                                  <td>{{ user.alterado_em }}</td>
-                                  <td><a href='#'><button class="btn btn-outline-primary-2x" type="button" title="EDITAR"><i data-feather="edit"></i></button></a></td>
-                                  <td><a href='#'><button class="btn btn-outline-danger-2x" type="button" title="EXCLUIR"><i data-feather="trash-2"></i></button></a></td>
-                              </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
+                            <div>
+                                <div class="col-sm-9">
+                                    <br>
+                                  <button class="btn btn-primary" type="submit">Enviar</button>
+                                  <a href="usuarios" class="btn btn-warning">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                        
                     </div>
                   </div>
                 </div>

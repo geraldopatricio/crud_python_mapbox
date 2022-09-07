@@ -105,12 +105,12 @@
                   </li>
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="server"></i><span>Navegar</span></a>
                     <ul class="nav-submenu menu-content">
-                        <li><a href="cidades">Cidades</a></li>
-                        <li><a href="usuarios">Usuários</a></li>
-                        <li><a href="tecnicos">Técnicos</a></li>
-                        <li><a href="atendimentos">Atendimento</a></li>
-                        <li><a href="consulta">Consulta</a></li>
-                        <li><a href="rota">Rotas</a></li>
+                      <li><a href="cidades">Cidades</a></li>
+                      <li><a href="usuarios">Usuários</a></li>
+                      <li><a href="tecnicos">Técnicos</a></li>
+                      <li><a href="atendimentos">Atendimento</a></li>
+                      <li><a href="consulta">Consulta</a></li>
+                      <li><a href="rota">Rotas</a></li>
                     </ul>
                   </li>
                   <li><a class="nav-link menu-title link-nav" href="#"><i data-feather="headphones"></i><span>Ajuda</span></a></li>
@@ -187,9 +187,9 @@
                         <thead>
                           <tr>
                             <th>ID</th>
+                            <th>ID CIDADE</th>
                             <th>NOME</th>
-                            <th>NOTA</th>
-                            <th>COORDENADA</th>
+                            <th>NOTA MÉDIA</th>
                             <th></th>
                             <th></th>
                           </tr>
@@ -198,9 +198,9 @@
                           {% for tec in tecs %}
                               <tr>
                                   <td>{{ tec.id }}</th>
+                                  <td>{{ tec.id_cidade }}</td>
                                   <td>{{ tec.nome }}</td>
                                   <td>{{ tec.nota_media }}</td>
-                                  <td>{{ tec.coordenada }}</td>
                                   <td><a href='#'><button class="btn btn-outline-primary-2x" type="button" title="EDITAR"><i data-feather="edit"></i></button></a></td>
                                   <td><a href='#'><button class="btn btn-outline-danger-2x" type="button" title="EXCLUIR"><i data-feather="trash-2"></i></button></a></td>
                               </tr>
