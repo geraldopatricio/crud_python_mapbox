@@ -40,7 +40,6 @@ CREATE TABLE public.atendimento_status (
 	CONSTRAINT atendimento_status_pkey PRIMARY KEY (id)
 );
 
-
 CREATE TABLE public.cidade_brasil (
 	id serial4 NOT NULL,
 	estado varchar(255) NULL,
@@ -58,15 +57,13 @@ CREATE TABLE public.cidade_brasil (
 	alterado_em varchar(255) NULL,
 	etag varchar(255) NULL,
 	CONSTRAINT cidade_brasil_pkey PRIMARY KEY (id)
-	
-	
+		
 CREATE TABLE public.cliente (
 	id serial4 NOT NULL,
 	id_cidade_brasil int8 NOT NULL,
 	nome varchar(50) NULL,
 	CONSTRAINT cliente_pkey PRIMARY KEY (id)
 );
-
 
 CREATE TABLE public.tecnico (
 	id serial4 NOT NULL,
@@ -78,12 +75,12 @@ CREATE TABLE public.tecnico (
 
 CREATE TABLE public.usuario (
 	id int8 NOT NULL,
-	nome varchar(100) NOT NULL,
+	usuario varchar(20) NOT NULL,
+	senha varchar(20) NOT NULL,
 	criado_em timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	alterado_em timestamp NOT NULL,
 	CONSTRAINT user_pkey PRIMARY KEY (id)
 );
-
  
 CREATE OR REPLACE VIEW public.v_consulta
 AS SELECT cid.cidade,
@@ -97,7 +94,6 @@ AS SELECT cid.cidade,
   WHERE cid.id = tec.id_cidade AND tec.id = ate.id_tecnico
   GROUP BY cid.cidade, cid.estado, ate.nota;
   
-
 CREATE OR REPLACE VIEW public.v_atendimento_cidade_cliente
 AS select ate.id as cod_atendimento
         , cli.nome as cliente 
@@ -108,7 +104,6 @@ AS select ate.id as cod_atendimento
   WHERE ate.id_cliente = cli.id  
     and cli.id_cidade_brasil = cb.id 
     
-
 CREATE OR REPLACE VIEW public.v_tecnico_disponivel
 AS select tec.nome as tecnico_disponivel
 FROM tecnico tec,
