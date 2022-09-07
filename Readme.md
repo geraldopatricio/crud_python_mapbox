@@ -13,7 +13,10 @@
   <img src="./assets/images/mapa2.png" width="800" alt="Tela de consulta de rotas no Mapa" /></a>
 </p>
 <p align="center">
-  <img src="./assets/images/tec.png" width="800" alt="Tela de consulta de rotas no Mapa" /></a>
+  <img src="./assets/images/tec.png" width="800" alt="Tela de consulta de tecnicos disponiveis" /></a>
+</p>
+<p align="center">
+  <img src="./assets/images/cad.png" width="800" alt="Tela de cadastro de usuarios" /></a>
 </p>
 
 ## criando o banco
