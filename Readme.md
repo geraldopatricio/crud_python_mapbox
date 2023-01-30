@@ -179,6 +179,6 @@ https://github.com/googlemaps/google-maps-services-python/blob/master/googlemaps
 
 ## suporte
 ```bash
-Zap: 85 9 97635122
+WhatsApp: (85) 9 9731-9843
 Mail: geraldo@gpsoft.com.br
 ```
